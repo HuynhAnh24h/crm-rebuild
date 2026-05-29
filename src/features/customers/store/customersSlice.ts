@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit'
-import api from '@/lib/axios'
+// import api from '@/lib/axios'
 import { Customer, CustomerFormData, CustomersState } from '../types'
 
 // ── Mock data ────────────────────────────────────────────────────
@@ -98,10 +98,12 @@ const customersSlice = createSlice({
       .addCase(fetchCustomers.pending, (s) => { s.loading = true; s.error = null })
       .addCase(fetchCustomers.fulfilled, (s, a) => { s.loading = false; s.items = a.payload; s.total = a.payload.length })
       .addCase(fetchCustomers.rejected, (s, a) => { s.loading = false; s.error = a.payload as string })
+
       // create
       .addCase(createCustomer.pending, (s) => { s.loading = true })
       .addCase(createCustomer.fulfilled, (s, a) => { s.loading = false; s.items.unshift(a.payload); s.total++ })
       .addCase(createCustomer.rejected, (s, a) => { s.loading = false; s.error = a.payload as string })
+
       // update
       .addCase(updateCustomer.pending, (s) => { s.loading = true })
       .addCase(updateCustomer.fulfilled, (s, a) => {
@@ -109,6 +111,7 @@ const customersSlice = createSlice({
         s.items = s.items.map((c) => (c.id === a.payload.id ? a.payload : c))
       })
       .addCase(updateCustomer.rejected, (s, a) => { s.loading = false; s.error = a.payload as string })
+      
       // delete
       .addCase(deleteCustomer.pending, (s) => { s.loading = true })
       .addCase(deleteCustomer.fulfilled, (s, a) => {

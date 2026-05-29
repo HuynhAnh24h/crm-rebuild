@@ -1,5 +1,5 @@
-import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit'
-import api from '@/lib/axios'
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+// import api from '@/lib/axios'
 import { AuthState, AuthUser, LoginFormData } from '../types'
 
 const initialState: AuthState = {
@@ -13,7 +13,7 @@ export const loginThunk = createAsyncThunk(
   'auth/login',
   async (data: LoginFormData, { rejectWithValue }) => {
     try {
-      // Mock response – thay bằng API thật
+      // Mock response 
       // const res = await api.post('/auth/login', data)
       const mockUser: AuthUser = {
         id: '1',
