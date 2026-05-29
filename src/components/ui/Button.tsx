@@ -1,5 +1,5 @@
 import { ButtonHTMLAttributes, forwardRef } from 'react'
-import { cva, type VariantProps } from 'class-variance-authority'
+
 
 // Simple CVA-like utility (no extra dep needed)
 type Variant = 'primary' | 'secondary' | 'danger' | 'ghost' | 'outline'
